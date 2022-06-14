@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  @apply m-0 box-border p-0 outline-none;
+}
+
+body,
+input,
+button {
+  @apply font-roboto text-sm md:text-base;
+}
+
+label {
+  @apply text-sm md:text-base;
+}
+
+input {
+  @apply rounded border-[1px] border-slate-200 p-4 outline-none transition-colors duration-300 hover:border-brand-300 focus:border-brand-300 focus:outline-none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong {
+  @apply font-medium;
+}
+
+button {
+  @apply cursor-pointer;
+}
+
+a {
+  @apply text-brand-400 transition-colors duration-300 hover:text-brand-900;
+}
+
+.btn-primary {
+  @apply rounded border-[1px] border-brand-800 bg-brand-900 p-3 font-medium text-white transition-colors duration-300 hover:border-brand-900 hover:bg-brand-400 disabled:cursor-not-allowed disabled:bg-brand-200 md:p-4;
+}
+
+.error {
+  @apply text-xs font-medium text-red-400 md:text-sm;
+}
