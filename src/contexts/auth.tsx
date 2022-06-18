@@ -1,13 +1,10 @@
 import { createContext } from "react";
 
-export interface User {
-  token: string;
-}
+import { IUser } from "../api/interfaces/IUser";
 
 export interface AuthContextType {
-  user: User;
-  deauthenticate: () => void;
-  authenticate: (username: string, password: string) => Promise<void>;
+  user: IUser | null;
+  setUser: (user: IUser) => void;
 }
 
-export default createContext<AuthContextType>({} as AuthContextType);
+export const AuthContext = createContext<AuthContextType>({} as AuthContextType);

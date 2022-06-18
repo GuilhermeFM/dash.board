@@ -1,30 +1,59 @@
-import { forwardRef, InputHTMLAttributes, Ref } from "react";
+import { HTMLProps, useEffect, useRef } from "react";
+import { faX } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  label: string;
-  error: string | null | undefined;
-}
+import { useField } from "@unform/core";
 
-function Input(props: InputProps, ref: Ref<HTMLInputElement>) {
-  const { label, error } = props;
-  const { id, type, placeholder, onChange } = props;
+export function Input({
+  name,
+  className,
+  disabled,
+  ...rest
+}: HTMLProps<HTMLInputElement>) {
+  const ref = useRef<HTMLInputElement>(null);
+
+  const { fieldName, defaultValue, error, registerField, clearError } = useField(name!);
+
+  useEffect(() => {
+    registerField({
+      ref: ref,
+      name: fieldName,
+      getValue: (ref) => {
+        return ref.current.value;
+      },
+      setValue: (ref, value) => {
+        ref.current.value = value;
+      },
+      clearValue: (ref) => {
+        ref.current.value = "";
+      },
+    });
+  }, [fieldName, registerField]);
 
   return (
-    <div className="w-full">
-      <label htmlFor="email" className="text-brand-700">
-        {label}
-      </label>
+    <div
+      className={`relative flex items-center rounded-md border bg-white focus-within:shadow-md hover:shadow-md ${
+        error
+          ? "border-red-400"
+          : !disabled &&
+            `border-slate-100 transition-colors duration-300 focus-within:border-brand-300 hover:border-brand-300`
+      }`}
+    >
       <input
-        id={id}
-        type={type}
-        placeholder={placeholder}
-        className={`${error && "border-red-300"} mt-2 w-full`}
-        onChange={onChange}
         ref={ref}
+        name={name}
+        value={defaultValue}
+        disabled={disabled}
+        className="w-full rounded-md p-3"
+        onChange={() => clearError()}
+        {...rest}
       />
-      {error && <p className="error mt-3 ml-[2px]">{error}</p>}
+      <FontAwesomeIcon
+        icon={faX}
+        className={`absolute right-5 text-xs md:text-sm ${
+          error ? "text-red-400" : "invisible"
+        }`}
+      />
     </div>
   );
 }
-
-export default forwardRef(Input);
