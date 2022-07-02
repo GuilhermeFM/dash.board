@@ -1,3 +1,14 @@
+import { IconName, IconPrefix } from "@fortawesome/free-solid-svg-icons";
+
 export interface IUser {
-  token: string;
+  name: string;
+  menu: string;
+  nav: {
+    header?: string;
+    items: {
+      icon: [IconPrefix, IconName];
+      title: string;
+      to: string;
+    }[];
+  }[];
 }

@@ -1,27 +1,18 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import { AuthProvider } from "./providers/auth";
 
 import { External } from "./layouts/External";
-import { Internal } from "./layouts/Internal";
-
 import { SignIn } from "./pages/SignIn";
 import { SignUp } from "./pages/SignUp";
 import { RecoverPassword } from "./pages/RecoverPassword";
 
+import { RequireAuth } from "./components/Auth/RequireAuth";
+
+import { Internal } from "./layouts/Internal";
 import { Home } from "./pages/Home";
-
-import { useAuth } from "./hooks/auth";
-
-function RequireAuth({ children }: { children: JSX.Element }) {
-  const { user } = useAuth();
-
-  if (!user) {
-    return <Navigate to="/sign-in" replace />;
-  }
-
-  return children;
-}
+import { Users } from "./pages/admin/User";
+import { Permissions } from "./pages/admin/Permissions";
 
 export default function App() {
   return (
@@ -40,6 +31,22 @@ export default function App() {
               element={
                 <RequireAuth>
                   <Home />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/users"
+              element={
+                <RequireAuth>
+                  <Users />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/permissions"
+              element={
+                <RequireAuth>
+                  <Permissions />
                 </RequireAuth>
               }
             />
