@@ -1,3 +1,7 @@
+import { INav } from "./INav";
+
 export interface IUser {
-  token: string;
+  name: string;
+  menu: string;
+  nav: INav[];
 }

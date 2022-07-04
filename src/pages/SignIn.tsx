@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import * as Yup from "yup";
 import { Form } from "@unform/web";
@@ -9,8 +9,10 @@ import { Input } from "../components/Forms/Input";
 import { Button } from "../components/Forms/Button";
 import { ErrorBox } from "../components/Forms/ErrorBox";
 
+import { useAuth } from "../hooks/auth";
 import { useFetch } from "../hooks/fetch";
 import { useValidade } from "../hooks/validade";
+import { IUser } from "../api/interfaces/IUser";
 
 interface FormData {
   username: string;
@@ -25,7 +27,10 @@ const signInFormValidation = Yup.object().shape({
 export function SignIn() {
   const formRef = useRef<FormHandles>(null);
   const { validations, validate } = useValidade();
-  const { error, fetching, executeGet } = useFetch();
+  const { data, error, fetching, executeGet } = useFetch<IUser>();
+
+  const { addUser } = useAuth();
+  const navigate = useNavigate();
 
   const handleOnSubmit = useCallback(async (data: FormData) => {
     const required = await validate(signInFormValidation, data);
@@ -38,8 +43,21 @@ export function SignIn() {
   }, []);
 
   useEffect(() => {
-    formRef.current?.setErrors(validations ?? {});
+    if (!validations) {
+      return;
+    }
+
+    formRef.current?.setErrors(validations);
   }, [validations]);
+
+  useEffect(() => {
+    if (!data) {
+      return;
+    }
+
+    addUser(data);
+    navigate("/");
+  }, [data]);
 
   return (
     <div className="flex w-full flex-col items-center justify-center gap-5">
