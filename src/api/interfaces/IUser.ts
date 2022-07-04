@@ -1,14 +1,7 @@
-import { IconName, IconPrefix } from "@fortawesome/free-solid-svg-icons";
+import { INav } from "./INav";
 
 export interface IUser {
   name: string;
   menu: string;
-  nav: {
-    header?: string;
-    items: {
-      icon: [IconPrefix, IconName];
-      title: string;
-      to: string;
-    }[];
-  }[];
+  nav: INav[];
 }

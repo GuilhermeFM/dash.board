@@ -35,7 +35,7 @@ export default function App() {
               }
             />
             <Route
-              path="/users"
+              path="/management/users"
               element={
                 <RequireAuth>
                   <Users />
@@ -43,7 +43,7 @@ export default function App() {
               }
             />
             <Route
-              path="/permissions"
+              path="/management/permissions"
               element={
                 <RequireAuth>
                   <Permissions />

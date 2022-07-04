@@ -9,7 +9,7 @@ interface SideProps {
   onNavigate?: () => void;
 }
 
-export default function Side({ onNavigate }: SideProps) {
+export function Side({ onNavigate }: SideProps) {
   const { user } = useAuth();
   const { pathname } = useLocation();
 

@@ -21,16 +21,51 @@
             {
               "icon": ["fas", "user"],
               "title": "Users",
-              "to": "/users"
+              "to": "/management/users"
             },
             {
               "icon": ["fas", "shield"],
               "title": "Permissions",
-              "to": "/permissions"
+              "to": "/management/permissions"
             }
           ]
         }
       ]
     }
+  },
+  "reload-nav": {
+    "success": true,
+    "message": "",
+    "payload": [
+      {
+        "items": [
+          {
+            "icon": ["fas", "home"],
+            "title": "Home",
+            "to": "/"
+          }
+        ]
+      },
+      {
+        "header": "Management",
+        "items": [
+          {
+            "icon": ["fas", "user"],
+            "title": "Users",
+            "to": "/management/users"
+          },
+          {
+            "icon": ["fas", "shield"],
+            "title": "Permissions",
+            "to": "/management/permissions"
+          },
+          {
+            "icon": ["fas", "shield"],
+            "title": "Permissions",
+            "to": "/management/permissions"
+          }
+        ]
+      }
+    ]
   }
 }
