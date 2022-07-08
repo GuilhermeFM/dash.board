@@ -6,5 +6,5 @@ export interface INav {
     icon: [IconPrefix, IconName];
     title: string;
     to: string;
-  };
+  }[];
 }

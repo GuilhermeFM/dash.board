@@ -57,8 +57,8 @@ export function Profile() {
                   disabled={fetching}
                   onClick={() => handleReloadNav()}
                   className={`${
-                    active && "bg-brand-100 text-white"
-                  } flex items-center gap-4 px-6 py-4 text-sm text-brand-900 transition-colors duration-150 disabled:cursor-not-allowed`}
+                    active && "bg-brand-900 text-white"
+                  } flex items-center gap-4 px-6 py-4 text-sm text-brand-900 transition-colors duration-150 hover:text-white disabled:cursor-not-allowed`}
                 >
                   <FontAwesomeIcon icon={["fas", "arrows-rotate"]} />
                   <span>Reload permissions</span>
@@ -70,8 +70,8 @@ export function Profile() {
                 <button
                   onClick={() => removeUser()}
                   className={`${
-                    active && "bg-brand-100 text-white"
-                  } flex items-center gap-4 rounded-b-lg px-6 py-4 text-sm text-brand-900 transition-colors duration-150 disabled:cursor-not-allowed`}
+                    active && "bg-brand-900 text-white"
+                  } flex items-center gap-4 rounded-b-lg px-6 py-4 text-sm text-brand-900 transition-colors duration-150 hover:text-white disabled:cursor-not-allowed`}
                 >
                   <FontAwesomeIcon icon={["fas", "arrow-right-from-bracket"]} />
                   <span>Exit</span>
