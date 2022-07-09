@@ -41,11 +41,11 @@ export function Profile() {
         leaveTo="transform scale-95 opacity-0"
       >
         <Menu.Items className="absolute top-16 right-0 flex w-[300px] flex-col rounded-lg bg-white shadow">
-          <div className="flex flex-col justify-center rounded-t-lg bg-zinc-50 p-6">
-            <p className="text-md font-medium text-brand-900">{user?.name}</p>
+          <div className="flex flex-col justify-center rounded-t-lg bg-brand-700 p-6">
+            <p className="text-md font-medium text-zinc-100">{user?.name}</p>
             <Link
               to=""
-              className="mt-1 text-sm font-medium text-brand-200 transition-colors duration-150 hover:text-brand-400"
+              className="mt-1 w-fit text-sm font-medium text-zinc-300 transition-colors duration-150 hover:text-zinc-100"
             >
               View my profile
             </Link>
@@ -57,8 +57,8 @@ export function Profile() {
                   disabled={fetching}
                   onClick={() => handleReloadNav()}
                   className={`${
-                    active && "bg-brand-900 text-white"
-                  } flex items-center gap-4 px-6 py-4 text-sm text-brand-900 transition-colors duration-150 hover:text-white disabled:cursor-not-allowed`}
+                    active && "bg-zinc-100 text-white"
+                  } flex items-center gap-4 px-6 py-4 text-sm text-brand-900 transition-colors duration-150 disabled:cursor-not-allowed`}
                 >
                   <FontAwesomeIcon icon={["fas", "arrows-rotate"]} />
                   <span>Reload permissions</span>
@@ -70,8 +70,8 @@ export function Profile() {
                 <button
                   onClick={() => removeUser()}
                   className={`${
-                    active && "bg-brand-900 text-white"
-                  } flex items-center gap-4 rounded-b-lg px-6 py-4 text-sm text-brand-900 transition-colors duration-150 hover:text-white disabled:cursor-not-allowed`}
+                    active && "bg-zinc-100 text-white"
+                  } flex items-center gap-4 rounded-b-lg px-6 py-4 text-sm text-brand-900 transition-colors duration-150 disabled:cursor-not-allowed`}
                 >
                   <FontAwesomeIcon icon={["fas", "arrow-right-from-bracket"]} />
                   <span>Exit</span>

@@ -32,12 +32,7 @@ export function Input({
 
   return (
     <div
-      className={`relative flex items-center rounded-md border bg-white focus-within:shadow-md hover:shadow-md ${
-        error
-          ? "border-red-400"
-          : !disabled &&
-            `border-slate-100 transition-colors duration-300 focus-within:border-brand-300 hover:border-brand-300`
-      }`}
+      className={`relative flex items-center rounded-md border bg-white transition-all duration-300 focus-within:shadow-md hover:shadow-md`}
     >
       <input
         ref={ref}
